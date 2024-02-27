@@ -7,6 +7,11 @@ import javax.xml.bind.Marshaller;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * Esta clase representa el punto de entrada principal del programa.
+ * Contiene la lógica principal para interactuar con la base de datos mediante JPA
+ * y para serializar una lista de artículos a XML utilizando JAXB.
+ */
 public class Main {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ModeloJPA");
@@ -70,7 +75,7 @@ public class Main {
             autor3.getLibros().add(libro6);
             em.persist(libro6);
 
-// Dos libros adicionales
+            // Dos libros adicionales
             Libro libro7 = new Libro("Cien años de soledad", 35.0, editorial1, autor3);
             libro7.setLibreria(libreria2);
             autor3.getLibros().add(libro7);
