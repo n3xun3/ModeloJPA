@@ -18,6 +18,10 @@ public class Empleado {
         this.empresa = empresa;
     }
 
+    public Empleado() {
+
+    }
+
     // Getters y setters
 
     public Long getId() {

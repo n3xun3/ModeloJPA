@@ -20,6 +20,10 @@ public class Direccion {
         this.empresa = empresa;
     }
 
+    public Direccion() {
+
+    }
+
     // Getters y setters
 
     public Long getId() {
