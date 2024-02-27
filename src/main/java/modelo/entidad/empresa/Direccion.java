@@ -3,7 +3,7 @@ package modelo.entidad.empresa;
 import javax.persistence.*;
 
 /**
- * Clase que representa una dirección asociada a una empresa.
+ * Clase que representa la dirección de un usuario.
  */
 @Entity
 public class Direccion {
@@ -14,83 +14,76 @@ public class Direccion {
     private String ciudad;
     private String codigoPostal;
 
-    @OneToOne(mappedBy = "direccion")
-    private Empresa empresa;
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     /**
      * Constructor de la clase Direccion.
-     *
-     * @param id           El ID de la dirección.
-     * @param calle        La calle de la dirección.
-     * @param ciudad       La ciudad de la dirección.
-     * @param codigoPostal El código postal de la dirección.
-     * @param empresa      La empresa asociada a la dirección.
+     * @param id Identificador de la dirección.
+     * @param calle Nombre de la calle.
+     * @param ciudad Nombre de la ciudad.
+     * @param codigoPostal Código postal de la dirección.
+     * @param usuario Usuario asociado a esta dirección.
      */
-    public Direccion(Long id, String calle, String ciudad, String codigoPostal, Empresa empresa) {
+    public Direccion(Long id, String calle, String ciudad, String codigoPostal, Usuario usuario) {
         this.id = id;
         this.calle = calle;
         this.ciudad = ciudad;
         this.codigoPostal = codigoPostal;
-        this.empresa = empresa;
+        this.usuario = usuario;
     }
 
     /**
-     * Constructor vacío requerido por JPA.
+     * Constructor vacío de la clase Direccion.
      */
-    public Direccion() {
-    }
+    public Direccion() {}
 
     // Getters y setters
 
     /**
-     * Obtiene el ID de la dirección.
-     *
-     * @return El ID de la dirección.
+     * Obtiene el identificador de la dirección.
+     * @return Identificador de la dirección.
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Establece el ID de la dirección.
-     *
-     * @param id El ID de la dirección.
+     * Establece el identificador de la dirección.
+     * @param id Identificador de la dirección.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Obtiene la calle de la dirección.
-     *
-     * @return La calle de la dirección.
+     * Obtiene el nombre de la calle.
+     * @return Nombre de la calle.
      */
     public String getCalle() {
         return calle;
     }
 
     /**
-     * Establece la calle de la dirección.
-     *
-     * @param calle La calle de la dirección.
+     * Establece el nombre de la calle.
+     * @param calle Nombre de la calle.
      */
     public void setCalle(String calle) {
         this.calle = calle;
     }
 
     /**
-     * Obtiene la ciudad de la dirección.
-     *
-     * @return La ciudad de la dirección.
+     * Obtiene el nombre de la ciudad.
+     * @return Nombre de la ciudad.
      */
     public String getCiudad() {
         return ciudad;
     }
 
     /**
-     * Establece la ciudad de la dirección.
-     *
-     * @param ciudad La ciudad de la dirección.
+     * Establece el nombre de la ciudad.
+     * @param ciudad Nombre de la ciudad.
      */
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
@@ -98,8 +91,7 @@ public class Direccion {
 
     /**
      * Obtiene el código postal de la dirección.
-     *
-     * @return El código postal de la dirección.
+     * @return Código postal de la dirección.
      */
     public String getCodigoPostal() {
         return codigoPostal;
@@ -107,35 +99,31 @@ public class Direccion {
 
     /**
      * Establece el código postal de la dirección.
-     *
-     * @param codigoPostal El código postal de la dirección.
+     * @param codigoPostal Código postal de la dirección.
      */
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
     /**
-     * Obtiene la empresa asociada a la dirección.
-     *
-     * @return La empresa asociada a la dirección.
+     * Obtiene el usuario asociado a esta dirección.
+     * @return Usuario asociado a esta dirección.
      */
-    public Empresa getEmpresa() {
-        return empresa;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     /**
-     * Establece la empresa asociada a la dirección.
-     *
-     * @param empresa La empresa asociada a la dirección.
+     * Establece el usuario asociado a esta dirección.
+     * @param usuario Usuario asociado a esta dirección.
      */
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     /**
-     * Sobrescritura del método toString para representar el objeto como una cadena de texto.
-     *
-     * @return Una cadena de texto que representa al objeto Direccion.
+     * Representación en forma de cadena de la dirección.
+     * @return Representación en forma de cadena de la dirección.
      */
     @Override
     public String toString() {
@@ -144,7 +132,7 @@ public class Direccion {
                 ", calle='" + calle + '\'' +
                 ", ciudad='" + ciudad + '\'' +
                 ", codigoPostal='" + codigoPostal + '\'' +
-                ", empresa=" + empresa +
+                ", usuario=" + usuario +
                 '}';
     }
 }
