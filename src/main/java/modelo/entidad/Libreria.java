@@ -11,7 +11,7 @@ public class Libreria {
     private String nombreDueno;
     private String direccion;
 
-    @OneToMany(mappedBy = "libreria")
+    @ManyToMany
     private List<Libro> libros;
 
     public Libreria(String nombre, String nombreDueno, String direccion) {
