@@ -2,6 +2,7 @@ package modelo.entidad;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,18 @@ public class Autor {
 
     @OneToMany(mappedBy = "autor")
     private List<Libro> libros;
+
+    public Autor(String nombre, String apellidos, LocalDate fechaNacimiento) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
+        this.libros = new ArrayList<>();
+    }
+
+
+    public Autor() {
+
+    }
 
     // Getters y setters
 

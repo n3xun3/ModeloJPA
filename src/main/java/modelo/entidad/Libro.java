@@ -15,7 +15,23 @@ public class Libro {
     @ManyToOne
     private Autor autor;
 
-    // Getters y setters
+    @ManyToOne
+    @JoinColumn(name = "libreria_id") // Nombre de la columna en la tabla de la base de datos
+    private Libreria libreria;
+
+    public Libro(String titulo, double precio, Editorial editorial, Autor autor) {
+        this.titulo = titulo;
+        this.precio = precio;
+        this.editorial = editorial;
+        this.autor = autor;
+    }
+
+
+    public Libro() {
+
+    }
+
+    // Constructor, getters y setters
 
     public Long getId() {
         return id;
@@ -57,15 +73,11 @@ public class Libro {
         this.autor = autor;
     }
 
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", precio=" + precio +
-                ", editorial=" + editorial +
-                ", autor=" + autor +
-                '}';
+    public Libreria getLibreria() {
+        return libreria;
+    }
+
+    public void setLibreria(Libreria libreria) {
+        this.libreria = libreria;
     }
 }
-

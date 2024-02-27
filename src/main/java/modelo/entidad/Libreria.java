@@ -11,8 +11,19 @@ public class Libreria {
     private String nombreDueno;
     private String direccion;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "libreria")
     private List<Libro> libros;
+
+    public Libreria(String nombre, String nombreDueno, String direccion) {
+        this.nombre = nombre;
+        this.nombreDueno = nombreDueno;
+        this.direccion = direccion;
+    }
+
+
+    public Libreria() {
+
+    }
 
     // Getters y setters
 

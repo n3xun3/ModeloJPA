@@ -14,6 +14,16 @@ public class Editorial {
     @OneToMany(mappedBy = "editorial")
     private List<Libro> libros;
 
+    public Editorial(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
+
+
+    public Editorial() {
+
+    }
+
     // Getters y setters
 
     public Long getId() {
