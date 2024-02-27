@@ -7,6 +7,8 @@
         <class>modelo.entidad.Editorial</class>
         <class>modelo.entidad.Libreria</class>
         <class>modelo.entidad.Libro</class>
+        <class>modelo.entidad.Articulo</class>
+        <class>modelo.entidad.Articulos</class>
         <properties>
             <!-- Tenemos una seríe de parametros minimos que decirle a JPA para que se pueda
             contectar a la BBDD -->

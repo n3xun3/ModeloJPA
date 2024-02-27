@@ -1,14 +1,11 @@
-import modelo.entidad.Autor;
-import modelo.entidad.Editorial;
-import modelo.entidad.Libreria;
-import modelo.entidad.Libro;
+import modelo.entidad.*;
 
 import javax.persistence.*;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -151,5 +148,26 @@ public class Main {
 
         em.close();
         emf.close();
+
+        // Código para serializar una lista de artículos a XML usando JAXB
+        System.out.println("---------------");
+        System.out.println("Mostrar XMLJAXB");
+        System.out.println("---------------");
+        List<Articulo> listaArticulos = new ArrayList<>();
+        listaArticulos.add(new Articulo(1, "Camiseta de algodón", 15.99));
+        listaArticulos.add(new Articulo(2, "Pantalones vaqueros", 29.95));
+        listaArticulos.add(new Articulo(3, "Zapatillas deportivas", 49.99));
+
+        Articulos articulos = new Articulos(listaArticulos);
+
+        try {
+            JAXBContext context = JAXBContext.newInstance(Articulos.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            marshaller.marshal(articulos, System.out);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 }
