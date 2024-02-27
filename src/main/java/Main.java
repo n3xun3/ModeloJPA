@@ -70,9 +70,20 @@ public class Main {
             autor3.getLibros().add(libro6);
             em.persist(libro6);
 
+// Dos libros adicionales
+            Libro libro7 = new Libro("Cien años de soledad", 35.0, editorial1, autor3);
+            libro7.setLibreria(libreria2);
+            autor3.getLibros().add(libro7);
+            em.persist(libro7);
+
+            Libro libro8 = new Libro("Crónica de una muerte anunciada", 22.0, editorial2, autor1);
+            libro8.setLibreria(libreria1);
+            autor1.getLibros().add(libro8);
+            em.persist(libro8);
+
             // Establecer libros en librerías
             libreria1.setLibros(Arrays.asList(libro1, libro2, libro3, libro6));
-            libreria2.setLibros(Arrays.asList(libro4, libro5));
+            libreria2.setLibros(Arrays.asList(libro4, libro5, libro7, libro8));
 
             // Commit transacción
             em.getTransaction().commit();
